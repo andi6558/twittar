@@ -41,16 +41,8 @@ export class Feeds extends React.Component {
         <Feed key = {key} name={name} tweet={tweet} />
       )
     }
-  
-    componentDidMount() {
-      this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
-    }
-    componentWillUnmount() {
-      clearInterval(this.interval);
-    }
-  
-    render() {
-      if (this.state.feeds.length === 0) {
+
+    loadTweets() {
         let response = getTweets();
         response.then(data => {
           this.setState({ feeds: data });
@@ -59,7 +51,19 @@ export class Feeds extends React.Component {
           console.log(err);
         }).finally(() => {
           console.log(this.state.feeds);
-        });
+        })
+      }
+  
+    componentDidMount() {
+      this.interval = setInterval(() => this.loadTweets(), 1000);
+    }
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+  
+    render() {
+      if (this.state.feeds.length === 0) {
+        
       }
       
       // turn the feeds into a list of Feeds
