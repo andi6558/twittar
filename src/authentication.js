@@ -29,6 +29,14 @@ export class UserSignupBox extends React.Component {
         });
     }
     render() {
+        if (this.props.username) {
+            // turn into a sign out button
+            return (
+                <Button bsStyle="primary" onClick={() => this.props.handleLogin('')}>
+                    Sign Out
+                </Button>
+            );
+        }
         return (
             <div>
                 <Button variant="primary" onClick={() => this.setState({ show: true })}>
@@ -90,6 +98,7 @@ export class UserLoginBox extends React.Component {
             alert(`User ${this.state.username} logged in successfully.`);
             console.log("Token:", data.token);
             localStorage.setItem('token', data.token);
+            this.props.handleLogin(this.state.username);
         });
         response.catch(err => {
             alert(err);
@@ -98,6 +107,10 @@ export class UserLoginBox extends React.Component {
         this.handleClose();
     }
     render() {
+        if(this.props.username) {
+            console.log("Username : ", this.props.username);
+            return <div> Hello, {this.props.username}</div>
+        }
         return (
             <div>
                 <Button variant="primary" onClick={this.handleShow}>

@@ -2,7 +2,7 @@ import axios from 'axios';
 const serverUrl = 'http://localhost:2321/api/';
 
 export async function login(username, password) {
-    let response = await axios.post(serverUrl + "signin", { username, password });
+    let response = await axios.post(serverUrl + "login", { username, password });
     return response.data;
 }
 
