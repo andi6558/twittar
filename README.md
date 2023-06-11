@@ -2,7 +2,7 @@
 
 [Backend repo](https://github.com/andi6558/twittar-backend)
 
-## Feature
+## Features
 - User signup and login with JWT
 - Real-time feeds with no need to refresh page
 
