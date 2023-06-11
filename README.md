@@ -1,4 +1,4 @@
-# Twittar - a Twitter-clone made with React 
+# Twittar frontend
 
 [Backend repo](https://github.com/andi6558/twittar-backend)
 
